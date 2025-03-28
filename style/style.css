@@ -114,9 +114,11 @@ body{
 
 
 .login-btn{
-    width: 418px;
+    display: grid;
+    place-content: center;
+    width: 280px;
     height: 56px;
-    flex-shrink: 0;
+    margin:auto;
     border-radius: 8px;
     opacity: 0.9;
     background: #4880FF;
@@ -128,5 +130,34 @@ body{
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.071px;
+
+}
+
+/* stilo navigation bar */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.sidebar {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background: #FFF;
+  border-right: 1px solid #D8D8D8;
+
+}
+
+
+.sidebar .image-text {
+  width: 12px;
+  border-radius: 6px;
+
 
 }

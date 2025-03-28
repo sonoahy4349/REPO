@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+		<link rel="database" href="./conexion.php">
     <link rel="stylesheet" href="./style/style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,7 @@
 		</head>
 
 <body>
-	<container class="container">
+	<div class="container">
 		<div class="form-container">
 
 			<div class="login-header">
@@ -20,30 +21,29 @@
 				<p>Ingrese su usuario y contraseña para iniciar sesion en su cuenta</p>
 			</div>
 
-			<div class="form-input-container">
-				<form>
+			<form action="login.php" method="POST" id="loginForm">
+
+				<div class="form-input-container">
 					<div class="form-group">
 						<label for="username" class="texto">Usuario:</label><br>
 						<input type="text" class="input-per" name="username" id="username" placeholder="">
 					</div>
-				</form>
-			</div>
+				</div>
 
-			<div class="form-input-container">
-				<form>
+				<div class="form-input-container">
 					<div class="form-group">
 						<label for="pass" class="texto">Contraseña:</label><br>
 						<input type="password" class="input-per" name="pass" id="pass" placeholder="">
 					</div>
-				</form>
-			</div>
+				</div>
 
-			<div class="login-btn">
-				<button type="submit" class="login-btn">Entrar</button>
-			</div>
+				<div class="login-btn">
+					<button type="submit" class="login-btn">Entrar</button>
+				</div>
 
+			</form>
 		</div>
-	</container>	
+	</div>	
 	
 </body>
 
