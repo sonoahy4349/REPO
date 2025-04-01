@@ -6,45 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 		<link rel="database" href="./conexion.php">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/login.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-		</head>
+</head>
+
 
 <body>
 	<div class="container">
-		<div class="form-container">
+		<h2>Ingrese a su cuenta</h2>
+    <p>Ingrese sus correo y contraseña para acceder a su cuenta</p>
 
-			<div class="login-header">
-				<h2>Ingrese a su cuenta</h2>
-				<p>Ingrese su usuario y contraseña para iniciar sesion en su cuenta</p>
-			</div>
+    <form class="form">
+      <label for="username" class="label">Usuario:</label><br>
+      <input type="text" id="username" name="username" class="input-box" placeholder=""required><br>
 
-			<form action="login.php" method="POST" id="loginForm">
+      <label for="password" class="label">Contraseña:</label><br>
+      <input type="password" id="password" name="password" class="input-box" required><br>
 
-				<div class="form-input-container">
-					<div class="form-group">
-						<label for="username" class="texto">Usuario:</label><br>
-						<input type="text" class="input-per" name="username" id="username" placeholder="">
-					</div>
-				</div>
+      <input type="checkbox" id="checkbox" class="toggle">
+      <label for="checkbox" class="toggle">Mantener sesion iniciada</label>
 
-				<div class="form-input-container">
-					<div class="form-group">
-						<label for="pass" class="texto">Contraseña:</label><br>
-						<input type="password" class="input-per" name="pass" id="pass" placeholder="">
-					</div>
-				</div>
+      <button class="btn" type="submit">Iniciar Sesión</button>
+    </form>
 
-				<div class="login-btn">
-					<button type="submit" class="login-btn">Entrar</button>
-				</div>
-
-			</form>
-		</div>
 	</div>	
-	
 </body>
-
 </html>
