@@ -1,37 +1,57 @@
 <?php
-// Conexión a la base de datos
-include 'conexion.php';
+session_start();
+require_once 'conexion.php';
 
-// Verificar si se enviaron datos por POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['pass'];
-
-    // Consultar la base de datos para obtener el usuario
-    $query = "SELECT * FROM usuarios WHERE correo = ?";
-    $stmt = $conexion->prepare($query);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Verificar si se envió el formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $correo = $_POST['username'] ?? '';
+    $contrasena = $_POST['password'] ?? '';
     
-    if ($result->num_rows > 0) {
-        // Si existe el usuario, verificar la contraseña
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['contrasena'])) {
-            // Si la contraseña es correcta, iniciar sesión
-            session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['nombre_completo'];
-            $_SESSION['role'] = $user['rol_id'];
-            header("Location: ../models/dashboard.php"); // Redirigir a un dashboard o página protegida
-        } else {
-            echo "Contraseña incorrecta.";
+    // Validaciones básicas
+    if (empty($correo) || empty($contrasena)) {
+        header('Location: index.php?error=Correo+y+contraseña+son+requeridos');
+        exit;
+    }
+    
+    try {
+        // Consulta preparada para seguridad
+        $sql = "SELECT id, nombre_completo, rol_id FROM usuarios WHERE correo = ? AND contrasena = ?";
+        $stmt = $conn->prepare($sql);
+        
+        if (!$stmt) {
+            throw new Exception('Error en la preparación de la consulta');
         }
-    } else {
-        echo "Usuario no encontrado.";
+        
+        $stmt->bind_param("ss", $correo, $contrasena);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows === 1) {
+            // Usuario autenticado correctamente
+            $user = $result->fetch_assoc();
+            
+            // Guardar datos en sesión
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['nombre_completo'];
+            $_SESSION['user_role'] = $user['rol_id'];
+            
+            // Redirigir al dashboard
+            header('../views/dashboard.html');
+            exit;
+        } else {
+            header('index.php?error=Credenciales+incorrectas');
+            exit;
+        }
+    } catch (Exception $e) {
+        header('index.php?error=Error+en+el+servidor');
+        exit;
+    } finally {
+        if (isset($stmt)) $stmt->close();
+        $conn->close();
     }
 } else {
-    echo "Método de solicitud no válido.";
+    // Si alguien intenta acceder directamente al script
+    header('index.php');
+    exit;
 }
-
 ?>

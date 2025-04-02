@@ -155,3 +155,137 @@ flex-direction: column;
 font-family: "Nunito Sans";
 
 }
+
+/* ----------------------header-------------------- */
+
+.main-container{
+  position: absolute;
+  top: 70px; /* Justo debajo de la navbar */
+  left: 240px; /* Justo al lado del sidebar */
+  width: calc(100% - 240px); /* Resta el sidebar */
+  height: calc(100vh - 70px); /* Resta la navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0.7rem 2rem;
+  border-radius: 6px;
+}
+
+.main-header{
+  font-family: "Nunito Sans";
+  font-size: 22px;  
+  font-style: normal;
+  font-weight: 800;
+}
+
+.filter{
+  width: 286px;
+  height: 720px;
+  border-radius: 14px;
+  border: 0.3px solid #B9B9B9;
+  background: #FFF;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  
+}
+
+.filter-btn{
+width: 238px;
+height: 43px;
+flex-shrink: 0;
+border-radius: 8px;
+opacity: 0.9;
+background: #4880FF;
+color: #FFF;
+text-align: center;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.05px;
+border: 0.3px solid #B9B9B9;
+}
+
+.list-header{
+color: #202224;
+font-family: "Nunito Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.057px;
+}
+
+.filter-element{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: 238px;
+  height: 43px;
+  padding: .4rem 1.2rem;
+  border-radius: 6px;
+  color: #202224;
+  font-family: "Nunito Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.05px;
+  opacity: .9;
+  transition: var(--tran-040);
+
+}
+
+.filter-element:hover{
+  background-color: var(--primary-color);
+  color:rgb(79, 79, 236);
+  fill: #FFF;
+  cursor: pointer;
+  transition: var(--tran-040);
+  border-radius: 4px;
+  background: #c1d3ff;
+  width: 238px;
+  height: 43px;
+  flex-shrink: 0;
+  
+}
+
+.filter-number{
+
+  margin-left: auto;
+}
+
+.filter-list{
+  list-style: none;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  width: 100%;
+  color: #202224;
+  font-family: "Nunito Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.05px;
+}
+
+.filter-link{
+color: #202224;
+font-family: "Nunito Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.05px;
+opacity: 0.5;
+margin-right: auto;
+padding-left: 15px;
+}
